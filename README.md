@@ -22,7 +22,7 @@ Hệ thống báo cháy gia đình sử dụng vi điều khiển **ESP32** ch�
 ## 🚀 Hướng dẫn Chạy và Kiểm thử
 
 ### 1. Chạy mạch mô phỏng trên Wokwi
-1. Truy cập [https://wokwi.com/projects/4802137455577169932](https://wokwi.com/projects/new/esp32).
+1. Truy cập [https://wokwi.com/projects/480213745557716993](https://wokwi.com/projects/new/esp32).
 
 ### 2. Mở Giao diện Web/App
 1. Mở trực tiếp file `d:\KI 1 NAM 4\HỆ THỐNG NHÚNG\Lab_RTOS_BaoChay\web_dashboard\index.html` trên trình duyệt (Chrome / Edge / Firefox).
