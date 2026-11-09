@@ -1,111 +1,73 @@
 {
   "version": 1,
-  "author": "Vu Minh Khoa - 231432270 - Dien Tu va Tin Hoc Cong Nghiep 1 K64",
+  "author": "Uri Shaked",
   "editor": "wokwi",
   "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": -4.76, "attrs": {} },
     {
-      "type": "board-esp32-devkit-c-v4",
-      "id": "esp",
-      "top": 0,
-      "left": 0,
-      "attrs": {}
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 43.2,
+      "left": 153.05,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 14.4,
+      "left": 220.25,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
     },
     {
       "type": "wokwi-gas-sensor",
-      "id": "mq2",
-      "top": -48,
-      "left": -220,
-      "attrs": {
-        "gas": "25"
-      }
+      "id": "gas1",
+      "top": -71.2,
+      "left": -217.9,
+      "rotate": 90,
+      "attrs": {}
     },
-    {
-      "type": "board-ds18b20",
-      "id": "temp1",
-      "top": 120,
-      "left": -190,
-      "attrs": {
-        "temperature": "31.5"
-      }
-    },
-    {
-      "type": "wokwi-resistor",
-      "id": "r_pullup",
-      "top": 82,
-      "left": -115,
-      "attrs": {
-        "value": "4700"
-      }
-    },
-    {
-      "type": "wokwi-resistor",
-      "id": "r_fan",
-      "top": 40,
-      "left": 145,
-      "attrs": {
-        "value": "220"
-      }
-    },
-    {
-      "type": "wokwi-led",
-      "id": "led_fan",
-      "top": -5,
-      "left": 230,
-      "attrs": {
-        "color": "cyan",
-        "label": "QUAT (FAN) - GPIO18"
-      }
-    },
-    {
-      "type": "wokwi-resistor",
-      "id": "r_pump",
-      "top": 115,
-      "left": 145,
-      "attrs": {
-        "value": "220"
-      }
-    },
-    {
-      "type": "wokwi-led",
-      "id": "led_pump",
-      "top": 70,
-      "left": 230,
-      "attrs": {
-        "color": "red",
-        "label": "MAY BOM (PUMP) - GPIO19"
-      }
-    },
+    { "type": "wokwi-ds18b20", "id": "temp1", "top": 190.87, "left": 176.88, "attrs": {} },
     {
       "type": "wokwi-buzzer",
       "id": "bz1",
-      "top": 165,
-      "left": 215,
-      "attrs": {
-        "volume": "0.2",
-        "label": "COI BAO CHAY (GPIO5)"
-      }
+      "top": 2.4,
+      "left": 289.8,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -61.2,
+      "left": 224.6,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -51.6,
+      "left": 157.4,
+      "attrs": { "color": "green" }
     }
   ],
   "connections": [
-    ["esp:TX", "$serialMonitor:RX", "", []],
-    ["esp:RX", "$serialMonitor:TX", "", []],
-    ["mq2:VCC", "esp:5V", "red", ["h38.4", "v211.2"]],
-    ["mq2:GND", "esp:GND.1", "black", ["h48", "v172.8"]],
-    ["mq2:AOUT", "esp:34", "orange", ["h67.2", "v86.4"]],
-    ["mq2:DOUT", "esp:35", "yellow", ["h57.6", "v105.6"]],
-    ["temp1:VCC", "esp:3V3", "red", ["v-115.2", "h153.6"]],
-    ["temp1:GND", "esp:GND.1", "black", ["v28.8", "h153.6"]],
-    ["temp1:DQ", "esp:4", "gold", ["v-19.2", "h288"]],
-    ["r_pullup:1", "esp:3V3", "red", ["v-67.2", "h96"]],
-    ["r_pullup:2", "temp1:DQ", "gold", ["v57.6", "h-38.4"]],
-    ["esp:18", "r_fan:1", "cyan", ["h38.4", "v-57.6"]],
-    ["r_fan:2", "led_fan:A", "cyan", ["h28.8"]],
-    ["led_fan:C", "esp:GND.2", "black", ["v48", "h-124.8"]],
-    ["esp:19", "r_pump:1", "red", ["h48", "v28.8"]],
-    ["r_pump:2", "led_pump:A", "red", ["h28.8"]],
-    ["led_pump:C", "esp:GND.2", "black", ["v48", "h-124.8"]],
-    ["esp:5", "bz1:2", "purple", ["h67.2", "v105.6"]],
-    ["bz1:1", "esp:GND.2", "black", ["v28.8", "h-115.2"]]
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "gas1:VCC", "esp:5V", "red", [ "v0" ] ],
+    [ "gas1:GND", "esp:CMD", "black", [ "v0" ] ],
+    [ "gas1:AOUT", "esp:34", "green", [ "v0" ] ],
+    [ "esp:5V", "temp1:VCC", "red", [ "h4.99", "v86.4", "h192" ] ],
+    [ "temp1:DQ", "esp:4", "green", [ "v0" ] ],
+    [ "temp1:GND", "esp:CMD", "black", [ "v0", "h-182.4" ] ],
+    [ "esp:5", "bz1:2", "green", [ "h0" ] ],
+    [ "esp:CMD", "bz1:1", "green", [ "h268.95", "v0", "h38.4" ] ],
+    [ "led2:A", "r1:1", "green", [ "v0" ] ],
+    [ "led1:A", "r2:1", "green", [ "v0" ] ],
+    [ "r2:2", "esp:19", "green", [ "h0", "v46.8" ] ],
+    [ "esp:18", "r1:2", "green", [ "h0" ] ],
+    [ "led2:C", "esp:GND.2", "green", [ "v0" ] ],
+    [ "esp:GND.2", "led1:C", "black", [ "v0", "h134.4" ] ]
   ],
   "dependencies": {}
 }
